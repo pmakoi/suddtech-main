@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="login" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/login.jsp" />
+	</definition>
+	<definition name="showContactForm" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
+	</definition>
+	<definition name="loggedout" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/loggedout.jsp" />
+	</definition>
+	<definition name="home" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/home.jsp" />
+	</definition>
+
+	<definition name="newaccount" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/newaccount.jsp" />
+	</definition>
+	<definition name="accountcreated" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/accountcreated.jsp" />
+	</definition>
+	<definition name="offers" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/offers.jsp" />
+	</definition>
+	<definition name="offercreated" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/offercreated.jsp" />
+	</definition>
+	<definition name="error" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/error.jsp" />
+	</definition>
+	<definition name="createoffer" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/createoffer.jsp" />
+	</definition>
+	<definition name="admin" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/admin.jsp" />
+	</definition>
+	<definition name="denied" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/denied.jsp" />
+	</definition>
+	<definition name="messageSent" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/messagesent.jsp" />
+	</definition>
+	<definition name="messages" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/messages.jsp" />
+	</definition>
+</tiles-definitions>
