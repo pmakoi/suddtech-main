@@ -18,45 +18,40 @@ import com.suddtech.easyshop.validation.ValidEmail;
 @Entity
 @Table(name = "messages")
 public class Message implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8063111826064761657L;
 
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	@Size(min=5, max=100)
+	private String subject;
+	
+	@Size(min=5, max=1000)
+	private String content;
 
-	@ValidEmail
-	private String email;
-	@Size(min = 4, max = 15)
+	// Name of user sending message
+	@Size(min=8, max=60)
 	private String name;
 
-	@Size(min = 8, max = 100)
-	private String subject;
+	// Sender's email address
+	@ValidEmail
+	private String email;
 
-	@Size(min = 8, max = 5000)
-	private String content;
-	@NotBlank
-	@Size(min = 4, max = 60)
-	// @Column(nullable=false)
-	//@Column(updatable=false, insertable=false)
-	 private String username;
-//	@ManyToOne
-//	@JoinColumn(name = "username")
-//	private User user;
+	// Send message TO this user.
+	private String username;
 
 	public Message() {
-		//this.user = user;
+
 	}
 
-	public Message(String email, String subject, String content,
-			String name/* , String username */) {
-		this.email = email;
+	public Message(String subject, String content, String name, String email,
+			String username) {
 		this.subject = subject;
-		//this.user = user;
 		this.content = content;
 		this.name = name;
+		this.email = email;
+		this.username = username;
 	}
 
 	public int getId() {
@@ -65,14 +60,6 @@ public class Message implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getSubject() {
@@ -98,21 +85,14 @@ public class Message implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-//	public String getUsername(){
-//		return user.getUsername();
-//	//	return this.getUser().setUsername(username);
-//	}
-//	public void setUsername(String username){
-//		this.getUser().setUsername(username);
-//		//user.setUsername(username);
-//	}
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getUsername() {
 		return username;
@@ -120,6 +100,63 @@ public class Message implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Message other = (Message) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (subject == null) {
+			if (other.subject != null)
+				return false;
+		} else if (!subject.equals(other.subject))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", subject=" + subject + ", content="
+				+ content + ", name=" + name + ", email=" + email
+				+ ", username=" + username + "]";
 	}
 
 }

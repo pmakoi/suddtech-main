@@ -15,11 +15,11 @@ public class  OfferRowMapper  implements RowMapper <Offer> {
 		User user= new User();
 		user.setAuthority(rs.getString("email"));
 		user.setEmail(rs.getString("email"));
-		user.setName(rs.getString("name"));
+		//user.setName(rs.getString("name"));
 		user.setEnabled(true);
 		user.setUsername(rs.getString("username"));
 		Offer offer = new Offer();
-		offer.setUser(user);
+		//offer.setUser(user);
 		offer.setId(rs.getInt("id"));
 		offer.setText(rs.getString("text"));
 		return offer;

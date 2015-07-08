@@ -24,7 +24,7 @@ public abstract class GenericDaoImpl<T extends Serializable> implements
 	protected Class<T> clazz;
 
 	@Autowired
-	protected SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	public Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();

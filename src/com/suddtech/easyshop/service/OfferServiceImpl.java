@@ -13,7 +13,7 @@ public class OfferServiceImpl implements OfferService {
 	private OfferDao offerDao;
 
 	public List<Offer> getCurrent() {
-		return offerDao.getOffers();
+		return offerDao.getList();//.getOffers();
 	}
 	@Autowired
 	public void setOfferDao(OfferDao offerDao) {
@@ -21,7 +21,7 @@ public class OfferServiceImpl implements OfferService {
 	}
 	@Override
 	public void createOffer(Offer offer) {
-		offerDao.create(offer);
+		offerDao.create(offer);//.saveOrUpdate(offer);
 		
 	}
 

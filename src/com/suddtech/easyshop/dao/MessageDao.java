@@ -8,11 +8,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.suddtech.easyshop.model.Message;
 
-@Repository
-@Transactional
-@Component("messageDao")
-public interface MessageDao extends GenericDao<Message> {
 
-	List<Message> getMessages(String username);
+public interface MessageDao {
+	public List<Message> getMessages() ;
+
+	public List<Message> getMessages(String username) ;
+	
+
+	public void saveOrUpdate(Message message) ;
+
+	public boolean delete(int id) ;
+
+	public Message getMessage(int id) ;
+	
 
 }

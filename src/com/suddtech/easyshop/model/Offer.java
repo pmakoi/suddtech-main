@@ -1,36 +1,46 @@
 package com.suddtech.easyshop.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.suddtech.easyshop.validation.ValidEmail;
+import com.suddtech.easyshop.dao.util.FormValidationGroup;
+import com.suddtech.easyshop.dao.util.PersistenceValidationGroup;
+@Entity
+@Table(name="offers")
+public class Offer implements Serializable{
 
-public class Offer {
-
+	@Id
+	@GeneratedValue
 	private int id;
-
-	@Size(min = 5, max = 100, message = "Name most be between 5 and 100 characters")
-	private String name;
-
-	@ValidEmail(min=6, message="This email address is not valid.")
-	private String email;
-
-	@Size(min = 20, max = 255, message = "text most be between 20 and 255 characters")
+	
+	@Size(min=5, max=255, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+	@Column(name="text")
 	private String text;
-
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User user;
+	
 	public Offer() {
-
+		this.user = new User();
 	}
 
-	public Offer(int id, String name, String email, String text) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
+	public Offer(User user, String text) {
+		this.user = user;
 		this.text = text;
 	}
 
-	public Offer(String name, String email, String text) {
-		this.name = name;
-		this.email = email;
+	public Offer(int id, User user, String text) {
+		this.id = id;
+		this.user = user;
 		this.text = text;
 	}
 
@@ -42,14 +52,6 @@ public class Offer {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getText() {
 		return text;
 	}
@@ -58,17 +60,52 @@ public class Offer {
 		this.text = text;
 	}
 
-	public String getEmail() {
-		return email;
+	public User getUser() {
+		return user;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public String getUsername() {
+		return user.getUsername();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Offer other = (Offer) obj;
+		if (text == null) {
+			if (other.text != null)
+				return false;
+		} else if (!text.equals(other.text))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Offer [name=" + name + ", text=" + text + "]";
+		return "Offer [id=" + id + ", text=" + text + ", user=" + user + "]";
 	}
 
 }
