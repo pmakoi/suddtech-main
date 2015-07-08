@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
-<%@ taglib prefix="sft" uri="http://www.springframework.org/tags/form" %>
 
+<%@ taglib prefix="sft" uri="http://www.springframework.org/tags/form" %>
+<div class="container">
 	 <sft:form class="form-signin" method ="post" action="${pageContext.request.contextPath}/createacount" commandName="user">
 	 
-        <h2 class="form-signin-heading">Pace your order please</h2>
-       <label for="inputName" class="col-sm-2 control-label"></label><br/><sft:errors path="username" cssClass="warning error"></sft:errors>
-        <sft:input type="text" id="inputName" path="username" name="username" class="form-control" placeholder="User name"></sft:input><%-- required autofocus --%>
+	  <h2 class="form-signin-heading">Pace your order please</h2>
+       <label for="inputName" class="col-sm-2 control-label"></label><br/><sft:errors path="name" cssClass="warning error"></sft:errors>
+        <sft:input type="text" id="inputName" path="name" name="name" class="form-control" placeholder="Name"></sft:input><%-- required autofocus --%>
+       
+       <label for="inputUserName" class="col-sm-2 control-label"></label><br/><sft:errors path="username" cssClass="warning error"></sft:errors>
+        <sft:input type="text" id="inputUserName" path="username" name="username" class="form-control" placeholder="Username"></sft:input><%-- required autofocus --%>
        
          <label for="inputPassword" class="col-sm-2 control-label"></label><br/><sft:errors path="password" cssClass="warning error"></sft:errors>
         <sft:input type="text" id="inputPassword" path="password" name="password" class="form-control" placeholder="Password"></sft:input><%-- required autofocus --%>
@@ -20,9 +23,6 @@
         <label for="inputTextErea" class="sr-only">Create advert</label><br/><sft:errors path="text" cssClass="warning error"></sft:errors>
         <sft:textarea id="inputTextErea" path="text" name="text" rows="3" class="form-control" placeholder="Your Text"></sft:textarea> --%>
 
-        <button class="btn btn-primary" type="submit" rolt="button">Create advert</button>
+        <button class="btn btn-primary" type="submit" rolt="button">Create account</button>
       </sft:form>
-	<%@ include file="footer.jsp" %>
-	
-</body>
-</html>
+	</div>

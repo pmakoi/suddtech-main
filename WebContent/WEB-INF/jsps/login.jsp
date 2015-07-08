@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="header.jsp" %>
+
 <div class="container">
 
       <form class="form-signin" name="f" action="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
@@ -19,11 +19,11 @@
         
         <input class="btn btn-primary"  name="submit" type="submit" value="Login"/>
 <!--         <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login">Sign in</button>
- -->      </form>
+ -->      </form> <p><a href='<c:url value="/newaccount"/>'>Create new account</a></p>
 
     </div> <!-- /container -->
     
-    
+   
     <!-- 
     <html><head><title>Login Page</title></head><body onload='document.f.j_username.focus();'>
 <h3>Login with Username and Password</h3><form name='f' action='/easyshop/j_spring_security_check' method='POST'>
@@ -33,8 +33,3 @@
     <tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
   </table>
  -->
-
-
-<%@ include file="footer.jsp" %>
-</body>
-</html>

@@ -17,6 +17,11 @@ import com.suddtech.easyshop.dao.util.PersistenceValidationGroup;
 @Table(name="offers")
 public class Offer implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private int id;
