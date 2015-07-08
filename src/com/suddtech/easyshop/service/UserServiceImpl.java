@@ -11,35 +11,46 @@ import com.suddtech.easyshop.dao.UserDao;
 import com.suddtech.easyshop.model.Message;
 import com.suddtech.easyshop.model.User;
 
-@Service("usersService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
-	@Autowired	
-private UserDao usersDao;
+	
 	@Autowired
-private MessageDao messagesDao;
+	private UserDao userDao;
 	
-	//@Autowired
-	public void setOffersDao(UserDao usersDao) {
-		this.usersDao = usersDao;
+	@Autowired
+	private MessageDao messagesDao;
+
+	// @Autowired
+	public void setOffersDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
-	
-	public void create(User user) {
-		usersDao.create(user);
+
+	public void setMessagesDao(MessageDao messagesDao) {
+		this.messagesDao = messagesDao;
 	}
 
+
+	public void createUser(User user) {
+		userDao.createUser(user);
+	}
 
 	public boolean exists(String username) {
-		return usersDao.exists(username);
+		return userDao.exists(username);
 	}
-	//@Autowired
+
+	// @Autowired
 	public void sendMessage(Message message) {
 		messagesDao.saveOrUpdate(message);
 	}
-	
 
 	@Secured("ROLE_ADMIN")
 	public List<User> getAllUsers() {
-		return usersDao.getList();//.getAllUsers();
+		return userDao.getList();// .getAllUsers();
 	}
 }

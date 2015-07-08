@@ -1,27 +1,28 @@
 package com.suddtech.easyshop.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.suddtech.easyshop.model.User;
 
 @Repository
 @Transactional
-@Component("usersDao")
+@Component("userDao")
 public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private SessionFactory sessionFactory;
 
+	public Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
 //	@Autowired
 //	private SessionFactory sessionFactory;
 //
@@ -32,10 +33,9 @@ public UserDaoImpl(){
 	setEntityClass(User.class);
 }
 	@Transactional
-	public void create(User user) {
+	public void createUser(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
-		getCurrentSession().save(user);
+		getSession().save(user);
 	}
 
 //	public boolean exists(String username) {

@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="sft" uri="http://www.springframework.org/tags/form" %>
 <div class="container">
-	 <sft:form class="form-signin" method ="post" action="${pageContext.request.contextPath}/createacount" commandName="user">
+	 <sft:form class="form-signin" method ="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 	 
 	  <h2 class="form-signin-heading">Pace your order please</h2>
        <label for="inputName" class="col-sm-2 control-label"></label><br/><sft:errors path="name" cssClass="warning error"></sft:errors>

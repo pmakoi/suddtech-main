@@ -9,7 +9,7 @@ public interface UserService {
 
 	public void setOffersDao(UserDao usersDao);
 
-	public void create(User user);
+	public void createUser(User user);
 
 	public boolean exists(String username);
 

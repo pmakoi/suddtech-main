@@ -6,7 +6,7 @@ public interface UserDao extends GenericDao<User> {
 
 	
 //	
-		public void create(User user) ;
+		public void createUser(User user) ;
 //		
 //		public boolean exists(String username) ;
 //
