@@ -13,7 +13,8 @@
         <sft:input type="text" id="inputUserName" path="username" name="username" class="form-control" placeholder="Username"></sft:input><%-- required autofocus --%>
        
          <label for="inputPassword" class="col-sm-2 control-label"></label><br/><sft:errors path="password" cssClass="warning error"></sft:errors>
-        <sft:input type="text" id="inputPassword" path="password" name="password" class="form-control" placeholder="Password"></sft:input><%-- required autofocus --%>
+        <sft:input type="text" id="inputPassword" path="password" name="password" class="form-control" placeholder="Password"></sft:input><br><%-- required autofocus --%>
+        
         <input type="text" id="inputPassword" name="confirmpassword" class="form-control" placeholder="Confirm password"></input><%-- required autofocus --%>
        
        

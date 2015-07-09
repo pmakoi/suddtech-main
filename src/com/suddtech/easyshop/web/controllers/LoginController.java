@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.suddtech.easyshop.dao.util.FormValidationGroup;
 import com.suddtech.easyshop.model.User;
 import com.suddtech.easyshop.service.UserService;
 
@@ -51,13 +52,13 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
-	public String createAccount(User user, BindingResult result) {
+	public String createAccount(@Validated(FormValidationGroup.class) User user, BindingResult result) {
 
 		if (result.hasErrors()) {
-			return "createaccount";
+			return "newaccount";
 		}
 
-		user.setAuthority("user");
+		user.setAuthority("ROLE_USER");
 		user.setEnabled(true);
 
 		userService.createUser(user);

@@ -19,6 +19,9 @@
 	<definition name="newaccount" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/newaccount.jsp" />
 	</definition>
+	<definition name="createaccount" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/createaccount.jsp" />
+	</definition>
 	<definition name="accountcreated" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/accountcreated.jsp" />
 	</definition>

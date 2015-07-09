@@ -9,5 +9,11 @@ public interface OfferService {
 
 	public void createOffer(Offer offer);
 
+	public Offer getOffer(String username);
+
+	public void saveOrUpdate(Offer offer);
+
+	public void delete(int id);
+
 	
 }

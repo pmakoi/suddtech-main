@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
@@ -68,8 +69,9 @@ public abstract class GenericDaoImpl<T extends Serializable> implements
 		getCurrentSession().delete(entity);
 	}
 
-	public void deleteById(String id) {
-		delete(getByID(id));
+	public void delete(int id) {
+		Query query = getCurrentSession().createQuery("delete from Offer where id=:id");
+		query.setLong("id", id);
 	}
 
 	public void saveOrUpdate(T entity) {
@@ -96,4 +98,5 @@ public abstract class GenericDaoImpl<T extends Serializable> implements
 		T t = (T) crit.uniqueResult();
 		return t != null;
 	}
+	
 }
