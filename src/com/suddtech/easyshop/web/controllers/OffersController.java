@@ -3,22 +3,24 @@ package com.suddtech.easyshop.web.controllers;
 import java.security.Principal;
 import java.util.List;
 
-import javax.validation.Valid;
-
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.suddtech.easyshop.dao.util.FormValidationGroup;
 import com.suddtech.easyshop.model.Offer;
 import com.suddtech.easyshop.service.OfferService;
 
 @Controller
 public class OffersController {
+	private static Logger logger = Logger.getLogger(HomeController.class);
+
 	private OfferService offerService;
 
 	@RequestMapping("/offers")
@@ -45,20 +47,12 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/docreate", method = RequestMethod.POST)
-	public String doCreate(Model model, @Valid Offer offer,
+	public String doCreate(Model model,
+			@Validated(value = FormValidationGroup.class) Offer offer,
 			BindingResult result, Principal principal,
 			@RequestParam(value = "delete", required = false) String delete) {
 
 		if (result.hasErrors()) {
-			//
-			// // System.out.println("Form not valid");
-			// List<ObjectError> errors = result.getAllErrors();
-			//
-			// for (ObjectError error : errors) {
-			// System.out.println(error.getDefaultMessage());
-			//
-			// }
-
 			return "createoffer";
 		}
 		if (delete == null) {
@@ -66,8 +60,7 @@ public class OffersController {
 			offer.getUser().setUsername(username);
 			offerService.saveOrUpdate(offer);
 			return "offercreated";
-		} 
-		else {
+		} else {
 			offerService.delete(offer.getId());
 			return "offerdeleted";
 		}

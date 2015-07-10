@@ -40,6 +40,10 @@ public abstract class GenericDaoImpl<T extends Serializable> implements
 		return (T) getCurrentSession().get(clazz, id);
 	}
 
+	public T find(int id) {
+		return (T) getCurrentSession().load(clazz, id);
+	}
+
 	public void create(T entity) {
 		saveOrUpdate(entity);		
 	}

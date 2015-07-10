@@ -15,5 +15,7 @@ public interface OfferService {
 
 	public void delete(int id);
 
+	public boolean hasOffer(String name);
+
 	
 }

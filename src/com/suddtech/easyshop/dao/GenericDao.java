@@ -21,6 +21,8 @@ public interface GenericDao<T> {
 
 	void delete(int id);
 
+	public T find(int id);
+
 	void saveOrUpdate(T entity);
 
 	// void deleteById(String id);

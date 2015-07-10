@@ -44,6 +44,17 @@ public class OfferServiceImpl implements OfferService {
 		// return offerDao.getOffer(username);
 	}
 
+	public boolean hasOffer(String name) {
+		if (name == null) {
+			return false;
+		}
+		List<Offer> offers = offerDao.getOffers(name);
+		if (offers.size() == 0) {
+			return false;
+		}
+		return true;
+	}
+
 	@Override
 	public void saveOrUpdate(Offer offer) {
 		offerDao.saveOrUpdate(offer);

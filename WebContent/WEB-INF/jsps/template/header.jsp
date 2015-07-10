@@ -20,7 +20,10 @@
             <li><a href="${pageContext.request.contextPath}/offers">Offer</a></li>
             <li><a href="${pageContext.request.contextPath}/createoffer">Create Offer</a></li>
 
-            <li><a href="#contact">Contact</a></li>
+            
+            <sec:authorize access="isAuthenticated()">
+             	<li><a href="${pageContext.request.contextPath}/contact">Contact</span></a></li>
+            </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
              <li><a href="${pageContext.request.contextPath}/admin">Admin page</a></li>
             </sec:authorize>
@@ -40,7 +43,7 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div> <!-- container-fluid -->
-    </nav>
+    </nav><br><br><br><br><br>
  
 <script type="text/javascript">
  //<!--

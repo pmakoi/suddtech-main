@@ -17,46 +17,46 @@ import com.suddtech.easyshop.model.Message;
 @Repository
 @Transactional
 @Component("messageDao")
-public class MessageDaoImpl/* extends GenericDaoImpl<Message>*/ implements
+public class MessageDaoImpl extends GenericDaoImpl<Message> implements
 		MessageDao {
-	private SessionFactory sessionFactory;
 	
-	public Session session() {
-		return sessionFactory.getCurrentSession();
+	public MessageDaoImpl(){
+		setEntityClass(Message.class);
 	}
-
-	@SuppressWarnings("unchecked")
-	public List<Message> getMessages() {
-		Criteria crit = session().createCriteria(Message.class);
-		return crit.list();
-	}
+	
+	
+//	@SuppressWarnings("unchecked")
+//	public List<Message> getMessages() {
+//		Criteria crit = session().createCriteria(Message.class);
+//		return crit.list();
+//	}
 
 	@SuppressWarnings("unchecked")
 	public List<Message> getMessages(String username) {
-		Criteria crit = session().createCriteria(Message.class);
+		Criteria crit = getCurrentSession().createCriteria(Message.class);
 
 		crit.add(Restrictions.eq("username", username));
 
 		return crit.list();
 	}
 
-	public void saveOrUpdate(Message message) {
-		System.out.println(message);
-		session().saveOrUpdate(message);
-	}
+//	public void saveOrUpdate(Message message) {
+//		System.out.println(message);
+//		session().saveOrUpdate(message);
+//	}
 
-	public boolean delete(int id) {
-		Query query = session().createQuery("delete from Message where id=:id");
-		query.setLong("id", id);
-		return query.executeUpdate() == 1;
-	}
+//	public boolean delete(int id) {
+//		Query query = session().createQuery("delete from Message where id=:id");
+//		query.setLong("id", id);
+//		return query.executeUpdate() == 1;
+//	}
 
-	public Message getMessage(int id) {
-		Criteria crit = session().createCriteria(Message.class);
-
-		crit.add(Restrictions.idEq(id));
-
-		return (Message)crit.uniqueResult();
-	}
-	
+//	public Message getMessage(int id) {
+//		Criteria crit = session().createCriteria(Message.class);
+//
+//		crit.add(Restrictions.idEq(id));
+//
+//		return (Message)crit.uniqueResult();
+//	}
+//	
 }

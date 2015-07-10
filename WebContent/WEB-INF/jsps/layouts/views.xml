@@ -43,10 +43,14 @@
 	<definition name="denied" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/denied.jsp" />
 	</definition>
+	
+	<!-- <definition name="contact" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
+	</definition> -->
 	<definition name="messageSent" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/messagesent.jsp" />
 	</definition>
-	<definition name="messages" extends="DefaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/jsps/messages.jsp" />
+	<definition name="showContactForm" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
 	</definition>
 </tiles-definitions>

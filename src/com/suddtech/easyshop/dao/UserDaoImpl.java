@@ -1,5 +1,7 @@
 package com.suddtech.easyshop.dao;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -28,6 +30,14 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	public void deleteById(String id) {
 		delete(getByID(id));
 	}
+
+	@Override
+	public User getUser(String username) {
+		Criteria crit = getCurrentSession().createCriteria(User.class);
+		crit.add(Restrictions.idEq(username));
+		return (User)crit.uniqueResult();
+	}
+
 
 	
 
