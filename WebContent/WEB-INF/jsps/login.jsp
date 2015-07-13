@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="container">
+<%-- <div class="container">
 
       <form class="form-signin" name="f" action="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -21,15 +21,45 @@
 <!--         <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Login">Sign in</button>
  -->      </form> <p><a href='<c:url value="/newaccount"/>'>Create new account</a></p>
 
-    </div> <!-- /container -->
+    </div> <!-- /container --> --%>
     
    
-    <!-- 
-    <html><head><title>Login Page</title></head><body onload='document.f.j_username.focus();'>
-<h3>Login with Username and Password</h3><form name='f' action='/easyshop/j_spring_security_check' method='POST'>
- <table>
-    <tr><td>User:</td><td><input type='text' name='j_username' value=''></td></tr>
-    <tr><td>Password:</td><td><input type='password' name='j_password'/></td></tr>
-    <tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
-  </table>
- -->
+  <div class="container">
+  
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+    
+    <div class="col-md-4">
+      <section class="login-form">
+      
+        <form method="POST" name="f" action="${pageContext.request.contextPath}/j_spring_security_check" role="login">
+        
+          <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
+          
+          <input type="email" name="j_username" placeholder="Email" required class="form-control input-lg" value="" />
+          
+          <input type="password" class="form-control input-lg" id="password" name="j_password"  placeholder="Password" required="" />
+          
+
+          <div class="pwstrength_viewport_progress"></div>
+          
+          
+          <button type="submit" name="go" value="login" class="btn btn-lg btn-primary btn-block">Sign in</button>
+          <div>
+            <a href='<c:url value="/newaccount"/>'>Create account</a> or <a href="#"></a>
+          </div>
+          
+        </form>
+        
+        <div class="form-links">
+          <a href="#">www.suddtech.net</a>
+        </div>
+      </section>  
+      </div>
+      
+      <div class="col-md-4"></div>
+      
+
+  </div>
+ 
+</div>

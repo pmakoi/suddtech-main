@@ -50,6 +50,9 @@
 	<definition name="messageSent" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/messagesent.jsp" />
 	</definition>
+	<definition name="messages" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/messages.jsp" />
+	</definition>
 	<definition name="showContactForm" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
 	</definition>

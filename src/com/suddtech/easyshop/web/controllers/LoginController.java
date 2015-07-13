@@ -1,6 +1,10 @@
 package com.suddtech.easyshop.web.controllers;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.suddtech.easyshop.dao.util.FormValidationGroup;
+import com.suddtech.easyshop.model.Message;
 import com.suddtech.easyshop.model.User;
 import com.suddtech.easyshop.service.UserService;
 
@@ -29,7 +35,10 @@ public class LoginController {
 	public String showDenied() {
 		return "denied";
 	}
-
+	@RequestMapping("/messages")
+	public String getMessages() {
+		return "messages";
+	}
 	@RequestMapping("/admin")
 	public String showAdmin(Model model) {
 
@@ -50,9 +59,11 @@ public class LoginController {
 		model.addAttribute("user", new User());
 		return "newaccount";
 	}
-
+	
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
-	public String createAccount(@Validated(FormValidationGroup.class) User user, BindingResult result) {
+	public String createAccount(
+			@Validated(FormValidationGroup.class) User user,
+			BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "newaccount";
@@ -66,8 +77,25 @@ public class LoginController {
 		return "accountcreated";
 	}
 
+	@RequestMapping(value = "/getmessages", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, Object> getMessages(Principal principal) {
+		List<Message> messages = null;
+		if (principal == null) {
+			messages = new ArrayList<Message>();
+		} else {
+			String username = principal.getName();
+			messages = userService.getMessages(username);
+
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("messages", messages);
+		data.put("number", messages.size());
+		return data;
+	}
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
+	
 }

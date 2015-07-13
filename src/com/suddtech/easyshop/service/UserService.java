@@ -13,5 +13,6 @@ public interface UserService {
 
 	public List<User> getAllUsers();
 	public void sendMessage(Message message);
+	public List<Message> getMessages(String username);
 
 }

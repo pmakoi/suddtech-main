@@ -5,7 +5,7 @@
 <div class="container">
 	 <sft:form class="form-signin" method ="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 	 
-	  <h2 class="form-signin-heading">Pace your order please</h2>
+	  <h2 class="form-signin-heading">New account</h2>
        <label for="inputName" class="col-sm-2 control-label"></label><br/><sft:errors path="name" cssClass="warning error"></sft:errors>
         <sft:input type="text" id="inputName" path="name" name="name" class="form-control" placeholder="Name"></sft:input><%-- required autofocus --%>
        

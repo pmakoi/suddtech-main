@@ -10,6 +10,7 @@
 	<script src="${pageContext.request.contextPath}/static/js/jquery-2.1.3.js"></script>
 	<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
 	<!-- Optional theme -->
 	<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
