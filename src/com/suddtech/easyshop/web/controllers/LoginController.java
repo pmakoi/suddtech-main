@@ -35,10 +35,12 @@ public class LoginController {
 	public String showDenied() {
 		return "denied";
 	}
-	@RequestMapping("/messages")
-	public String getMessages() {
-		return "messages";
-	}
+
+//	@RequestMapping("/messages")
+//	public String getMessages() {
+//		return "messages";
+//	}
+
 	@RequestMapping("/admin")
 	public String showAdmin(Model model) {
 
@@ -59,7 +61,7 @@ public class LoginController {
 		model.addAttribute("user", new User());
 		return "newaccount";
 	}
-	
+
 	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
 	public String createAccount(
 			@Validated(FormValidationGroup.class) User user,
@@ -97,5 +99,21 @@ public class LoginController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
+	//@RequestMapping(value = "/getmessages", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping("/messages")
+//	@ResponseBody
+	public String getMessages(Model model,Principal principal) {
+		List<Message> messages = null;
+		if (principal == null) {
+			messages = new ArrayList<Message>();
+		} else {
+			String username = principal.getName();
+			messages = userService.getMessages(username);
+
+		}
+		model.addAttribute("messages",messages);
+		return "messages";
+	}
+
 }

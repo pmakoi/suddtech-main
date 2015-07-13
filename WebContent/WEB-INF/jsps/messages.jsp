@@ -1,53 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-        <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-    
-     <div class="container">
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+
+<div class="container">
 	<div id="messages" class="table-responsive">
-		 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="example" class="table table-striped table-bordered"
+			cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					
+
 					<th>Email</th>
 					<th>Subject</th>
 					<th>Content</th>
 				</tr>
 			</thead>
 			<tfoot>
-				<tr>	
+				<tr>
 					<th>Email</th>
 					<th>Subject</th>
 					<th>Content</th>
 				</tr>
 			</tfoot>
 			<tbody id="tBody">
-				<c:forEach var="offer" items="${offers}">
+				<c:forEach var="message" items="${messages}">
+
 					<tr id="tableRow">
-						<td><c:out value="${offer.user.name}"></c:out></td>
-						<td><a href="<c:url value='/message?uid=${offer.username}'/>">Contact</a></td>
-						<td><c:out value="${offer.text}"></c:out></td>
+						<td><c:out value="${message.email}"></c:out></td>
+
+						<td><c:out value="${message.subject}"></c:out></td>
+
+						<td><a href="#"
+							class="glyphicon-style glyphicon glyphicon-envelope"
+							data-toggle="modal" data-target="#largeModal">. Open message</a>
+
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog"
+						aria-labelledby="largeModal" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">
+										<c:out value="${message.subject}"></c:out>
+									</h4>
+								</div>
+								<div class="modal-body">
+									<h3>
+										<c:out value="${message.content}"></c:out>
+									</h3>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save
+										changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+						</td>
+
 					</tr>
+
+					
 				</c:forEach>
+
 			</tbody>
 		</table>
-		<c:choose>
-			<c:when test="${hasOffer}">
-				<div>
-            		<a href='<c:url value="/createoffer"></c:url>'>Edit your current offer</a>
-          		</div>
-			</c:when>
-			<c:otherwise>
-				<div>
-            		<a href='<c:url value="/createoffer"></c:url>'>Create new offer</a>
-          		</div>
-			</c:otherwise>
-		
-		</c:choose> 
+
 	</div>
 </div>
-  
-<script type="text/javascript">
+
+
+
+
+
+
+<!-- <script type="text/javascript">
  //<!--
  function showMessages(data){
 	 $("#example > tbody").html(""); 
@@ -93,6 +124,5 @@
  }
  $(document).ready(onLoad);
  
- //-->
- </script>
-   
+ -->
+<!--  </script> -->
