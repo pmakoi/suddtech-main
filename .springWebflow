@@ -7,5 +7,9 @@
 			<file>WebContent/WEB-INF/flows/contact-flow.xml</file>
 			<name><![CDATA[contact-flow]]></name>
 		</config>
+		<config>
+			<file>WebContent/WEB-INF/flows/register.xml</file>
+			<name><![CDATA[register]]></name>
+		</config>
 	</configs>
 </webflow-project-description>

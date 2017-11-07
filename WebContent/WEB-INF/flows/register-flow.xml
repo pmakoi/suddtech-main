@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+<var name="user" class="com.suddtech.easyshop.model.User"/>
+	<view-state id="register" model="user">
+	<transition on="submitRegistration" to="accountcreated"></transition>
+	<transition on="cancelRegistration" to="cancelRegistration"></transition>
+	</view-state>
+
+	<end-state id="accountcreated"></end-state>
+	<end-state id="cancelRegistration" view="cart"></end-state>
+</flow>

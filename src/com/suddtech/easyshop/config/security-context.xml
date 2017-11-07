@@ -21,6 +21,9 @@
 		<security:intercept-url pattern="/static/**"  access="permitAll"/>
 		<security:intercept-url pattern="/login"  access="permitAll"/>
 		<security:intercept-url pattern="/message" access="permitAll" />
+				<security:intercept-url pattern="/cart" access="permitAll" />
+						<security:intercept-url pattern="/register" access="permitAll" />
+		
 		
 		<security:intercept-url pattern="/newaccount"  access="permitAll"/>
 		<security:intercept-url pattern="/createaccount"  access="permitAll"/>

@@ -16,11 +16,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsps/home.jsp" />
 	</definition>
 
-	<definition name="newaccount" extends="DefaultTemplate">
+	<!-- <definition name="newaccount" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/newaccount.jsp" />
-	</definition>
-	<definition name="createaccount" extends="DefaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/jsps/createaccount.jsp" />
+	</definition> -->
+	<definition name="register" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/newaccount.jsp" />
 	</definition>
 	<definition name="accountcreated" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/accountcreated.jsp" />
@@ -55,5 +55,8 @@
 	</definition>
 	<definition name="showContactForm" extends="DefaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
+	</definition>
+	<definition name="cart" extends="DefaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsps/cart.jsp" />
 	</definition>
 </tiles-definitions>
